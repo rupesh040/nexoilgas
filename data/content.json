@@ -1,0 +1,386 @@
+{
+  "NexOilGas": {
+    "templateComponents": {
+      "template-1": {
+        "shared": {
+          "Header": "NexOilGasHeader1",
+          "Footer": "NexOilGasFooter1"
+        },
+        "pages": {
+          "home": {
+            "components": [
+              {
+                "key": "Hero",
+                "component": "NexOilGasHero1"
+              },
+              {
+                "key": "About",
+                "component": "NexOilGasAbout1"
+              },
+              {
+                "key": "Services",
+                "component": "NexOilGasServices1"
+              },
+              {
+                "key": "WhyChooseUs",
+                "component": "NexOilGasWhyChooseUs1"
+              },
+              {
+                "key": "Testimonial",
+                "component": "NexOilGasTestimonial1"
+              },
+              {
+                "key": "Contact",
+                "component": "NexOilGasContact1"
+              },
+              {
+                "key": "Footer",
+                "component": "NexOilGasFooter1"
+              }
+            ]
+          },
+          "about-us": {
+            "components": [
+              {
+                "key": "PageBanner",
+                "component": "NexOilGasPageBanner1"
+              },
+              {
+                "key": "About",
+                "component": "NexOilGasAbout1"
+              }
+            ]
+          },
+          "services": {
+            "components": [
+              {
+                "key": "PageBanner",
+                "component": "NexOilGasPageBanner1"
+              },
+              {
+                "key": "ServicesListing",
+                "component": "NexOilGasServicesPage1"
+              }
+            ]
+          },
+          "why-choose-us": {
+            "components": [
+              {
+                "key": "PageBanner",
+                "component": "NexOilGasPageBanner1"
+              },
+              {
+                "key": "WhyChooseUs",
+                "component": "NexOilGasWhyChooseUs1"
+              }
+            ]
+          },
+          "testimonials": {
+            "components": [
+              {
+                "key": "PageBanner",
+                "component": "NexOilGasPageBanner1"
+              },
+              {
+                "key": "Testimonial",
+                "component": "NexOilGasTestimonial1"
+              }
+            ]
+          },
+          "contact": {
+            "components": [
+              {
+                "key": "PageBanner",
+                "component": "NexOilGasPageBanner1"
+              },
+              {
+                "key": "ContactDetails",
+                "component": "NexOilGasContact1"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "sections": {
+      "Header": {
+        "variants": {
+          "NexOilGasHeader1": {
+            "logo": "/logo.png",
+            "logoAlt": "NexOilGas Logo",
+            "links": [
+              {
+                "name": "Home",
+                "href": "/",
+                "active": true
+              },
+              {
+                "name": "About Us",
+                "href": "#about",
+                "active": false
+              },
+              {
+                "name": "Services",
+                "href": "#services",
+                "active": false
+              },
+              {
+                "name": "Why Choose Us",
+                "href": "#why-choose-us",
+                "active": false
+              },
+              {
+                "name": "Testimonial",
+                "href": "#testimonial",
+                "active": false
+              }
+            ],
+            "button": "Contact Us",
+            "buttonHref": "#contact"
+          }
+        }
+      },
+      "Hero": {
+        "variants": {
+          "NexOilGasHero1": {
+            "tagline": "POWERING A SUSTAINABLE TOMORROW",
+            "heading": "Reliable Oil & Gas Solutions",
+            "headingLines": [
+              "Reliable",
+              "Oil & Gas",
+              "Solutions"
+            ],
+            "description": "Leading provider of integrated energy infrastructure, specialized offshore drilling operations, and sustainable oil & gas engineering solutions.",
+            "backgroundImage": "/home.webp",
+            "ctaButton": {
+              "text": "Contact Us",
+              "href": "#contact"
+            }
+          }
+        }
+      },
+      "About": {
+        "variants": {
+          "NexOilGasAbout1": {
+            "tagline": "About Us",
+            "heading": "A Trusted Partner in the Oil & Gas Industry",
+            "headingPart1": "A Trusted Partner in",
+            "headingPart2": "the Oil & Gas Industry",
+            "description": "NexOilGas is a global energy solutions provider delivering end-to-end services across exploration, production, processing, and energy infrastructure. With a focus on safety, innovation, and sustainability, we help power industries and communities worldwide.",
+            "image": "/about.webp",
+            "stats": [
+              { "value": "15+", "label": "Years of Experience" },
+              { "value": "50+", "label": "Global Projects" },
+              { "value": "25+", "label": "Industry Experts" },
+              { "value": "10+", "label": "Countries Served" }
+            ]
+          }
+        }
+      },
+      "Services": {
+        "variants": {
+          "NexOilGasServices1": {
+            "tagline": "Our Services",
+            "taglinePrefix": "/",
+            "headingPart1": "Integrated",
+            "headingPart2": "Oil & Gas",
+            "headingHighlight": "Services",
+            "description": "We deliver end-to-end oil & gas solutions, combining technical expertise, advanced technology, and a strong focus on safety and efficiency.",
+            "items": [
+              {
+                "id": "1",
+                "title": "Exploration & Production",
+                "image": "/service-5.webp",
+                "href": "#contact",
+                "isFeatured": false
+              },
+              {
+                "id": "2",
+                "title": "Pipeline & Transportation",
+                "image": "/service-1.webp",
+                "href": "#contact",
+                "isFeatured": false
+              },
+              {
+                "id": "3",
+                "title": "Storage & Distribution",
+                "image": "/service-2.webp",
+                "href": "#contact",
+                "isFeatured": false
+              },
+              {
+                "id": "4",
+                "title": "Refining & Processing",
+                "image": "/service-3.webp",
+                "href": "#contact",
+                "isFeatured": false
+              },
+              {
+                "id": "5",
+                "title": "Field Operations & Maintenance",
+                "image": "/service-4.webp",
+                "href": "#contact",
+                "isFeatured": false
+              }
+            ]
+          }
+        }
+      },
+      "WhyChooseUs": {
+        "variants": {
+          "NexOilGasWhyChooseUs1": {
+            "tagline": "WHY CHOOSE US",
+            "headingPart1": "Your Trusted Partner in",
+            "headingPart2": "Oil & Gas",
+            "headingHighlight": "Excellence",
+            "description": "We combine industry expertise, advanced technology, and a strong commitment to safety and sustainability to deliver reliable and efficient oil & gas solutions worldwide.",
+            "image": "/whychooseus.webp",
+            "features": [
+              {
+                "title": "Safety First",
+                "description": "A zero-compromise approach to safety in every operation.",
+                "icon": "shield"
+              },
+              {
+                "title": "Industry Expertise",
+                "description": "A highly skilled team with deep oil & gas domain knowledge.",
+                "icon": "gear"
+              },
+              {
+                "title": "Sustainable Operations",
+                "description": "Responsible and environmentally conscious energy solutions.",
+                "icon": "leaf"
+              },
+              {
+                "title": "Reliable Partnership",
+                "description": "Long-term, transparent, and result-driven collaboration.",
+                "icon": "handshake"
+              }
+            ],
+            "overlayCard": {
+              "title": "Committed to Safer, Smarter & Cleaner Energy",
+              "description": "Delivering high-performance oil & gas solutions with a focus on innovation, safety, and a lower environmental impact."
+            }
+          }
+        }
+      },
+      "Testimonial": {
+        "variants": {
+          "NexOilGasTestimonial1": {
+            "tagline": "CLIENT TESTIMONIALS",
+            "headingPart1": "What Our Clients",
+            "headingHighlight": "Say",
+            "description": "Trusted by industry leaders for reliable, safe, and efficient oil & gas solutions.",
+            "backgroundImage": "/testimonial-bg.webp",
+            "items": [
+              {
+                "id": "1",
+                "name": "James Carter",
+                "role": "Operations Director",
+                "company": "Global Energy Corp.",
+                "image": "/testimonial-1.webp",
+                "quote": "NexOilGas has been a dependable partner for our upstream operations. Their professional approach, technical expertise, and commitment to safety are truly commendable."
+              },
+              {
+                "id": "2",
+                "name": "Emma Reynolds",
+                "role": "Project Manager",
+                "company": "PetroLine Energy",
+                "image": "/testimonial-2.webp",
+                "quote": "The team at NexOilGas consistently delivers high-quality services with a strong focus on efficiency and compliance. We are extremely satisfied with their support and long-term collaboration."
+              },
+              {
+                "id": "3",
+                "name": "David Henderson",
+                "role": "Chief Technology Officer",
+                "company": "Vanguard Offshore",
+                "image": "/testimonial-1.webp",
+                "quote": "Their digital automation and telemetry tools transformed our rig monitoring efficiency. Outstanding execution, proactive communication, and high safety standards."
+              },
+              {
+                "id": "4",
+                "name": "Sophia Martinez",
+                "role": "Head of Sustainable Energy",
+                "company": "TransOceanic Logistics",
+                "image": "/testimonial-2.webp",
+                "quote": "NexOilGas modernized our pipeline logistics network with cutting-edge environmental safeguards. Truly a reliable long-term partner for complex global projects."
+              }
+            ]
+          }
+        }
+      },
+      "Contact": {
+        "variants": {
+          "NexOilGasContact1": {
+            "tagline": "CONTACT US",
+            "heading": "Get In Touch With NexOilGas",
+            "description": "Have a question, partnership opportunity, or a project inquiry?\nWe'd be happy to hear from you.",
+            "infoItems": [
+              {
+                "icon": "map-pin",
+                "title": "Our Address",
+                "detail": "123 Energy Parkway, Houston, TX 77002, USA",
+                "href": "https://maps.google.com"
+              },
+              {
+                "icon": "mail",
+                "title": "Email Us",
+                "detail": "info@nexoilgas.com",
+                "href": "mailto:info@nexoilgas.com"
+              },
+              {
+                "icon": "phone",
+                "title": "Call Us",
+                "detail": "+1 (528) 456-7592",
+                "href": "tel:+15284567592"
+              }
+            ],
+            "formTitle": "Send Us a Message",
+            "formButtonText": "Submit Inquiry",
+            "inquiryOptions": [
+              "Inquiry Type",
+              "Offshore Drilling & Exploration",
+              "Pipeline Transportation & Logistics",
+              "Storage & Distribution",
+              "Refining & Chemical Processing",
+              "Field Operations & Maintenance",
+              "Partnership Opportunity"
+            ]
+          }
+        }
+      },
+      "Footer": {
+        "variants": {
+          "NexOilGasFooter1": {
+            "logo": "/logo.png",
+            "logoAlt": "NexOilGas Logo",
+            "backgroundImage": "/footer.png",
+            "description": "Delivering integrated oil & gas solutions with a focus on safety, efficiency, and sustainable energy operations worldwide.",
+            "quickLinks": [
+              { "name": "Home", "href": "/" },
+              { "name": "About Us", "href": "#about" },
+              { "name": "Our Services", "href": "#services" },
+              { "name": "Team", "href": "#team" },
+              { "name": "Testimonials", "href": "#testimonial" },
+              { "name": "FAQs", "href": "#faq" },
+              { "name": "Contact Us", "href": "#contact" }
+            ],
+            "contact": {
+              "email": "info@nexoilgas.com",
+              "phone": "+1 (528) 456-7592",
+              "address": "123 Energy Parkway,\nHouston, TX 77002, USA"
+            },
+            "socialLinks": [
+              { "name": "LinkedIn", "icon": "linkedin", "href": "https://linkedin.com" },
+              { "name": "Facebook", "icon": "facebook", "href": "https://facebook.com" },
+              { "name": "Twitter", "icon": "x", "href": "https://x.com" },
+              { "name": "Instagram", "icon": "instagram", "href": "https://instagram.com" },
+              { "name": "YouTube", "icon": "youtube", "href": "https://youtube.com" }
+            ],
+            "copyright": "© 2025 NexOilGas. All Rights Reserved."
+          }
+        }
+      }
+    }
+  }
+}
