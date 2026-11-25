@@ -99,6 +99,35 @@ export default function Testimonial({ data }: TestimonialProps) {
     touchEndX.current = 0;
   };
 
+  const renderNavButton = (direction: "prev" | "next", sizeClass: string) => {
+    const isPrev = direction === "prev";
+    return (
+      <button
+        type="button"
+        onClick={isPrev ? prevSlide : nextSlide}
+        aria-label={isPrev ? "Previous Testimonial" : "Next Testimonial"}
+        className={`${sizeClass} rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200/70 flex items-center justify-center transition-all duration-300 hover:bg-[#ea580c] hover:text-white hover:border-[#ea580c] hover:shadow-lg hover:shadow-orange-500/25 hover:scale-110 active:scale-95`}
+      >
+        <svg
+          className="w-5 h-5 stroke-[2.5]"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d={
+              isPrev
+                ? "M15.75 19.5L8.25 12l7.5-7.5"
+                : "M8.25 4.5l7.5 7.5-7.5 7.5"
+            }
+          />
+        </svg>
+      </button>
+    );
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -130,7 +159,7 @@ export default function Testimonial({ data }: TestimonialProps) {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <div
             className={`flex items-center justify-center gap-3 mb-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isVisible
@@ -175,7 +204,7 @@ export default function Testimonial({ data }: TestimonialProps) {
           }`}
         >
           <div
-            className="w-full overflow-hidden"
+            className="w-full overflow-hidden py-6"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -196,7 +225,7 @@ export default function Testimonial({ data }: TestimonialProps) {
                       <div className="flex-1 flex flex-col justify-between">
                         <div>
                           <svg
-                            className="w-9 h-9 text-zinc-300 group-hover:text-[#ea580c] mb-3 shrink-0 transition-all duration-400 group-hover:scale-110"
+                            className="w-9 h-9 text-[#ea580c] mb-3 shrink-0 transition-transform duration-400 group-hover:scale-110"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                           >
@@ -208,7 +237,7 @@ export default function Testimonial({ data }: TestimonialProps) {
                           </p>
                         </div>
 
-                        <div className="border-l-[3.5px] border-zinc-300 group-hover:border-[#ea580c] pl-3.5 py-0.5 transition-colors duration-400">
+                        <div className="border-l-[3.5px] border-[#ea580c] pl-3.5 py-0.5">
                           <h3 className="text-zinc-900 font-extrabold text-base sm:text-[17px] leading-snug">
                             {item.name}
                           </h3>
@@ -240,62 +269,31 @@ export default function Testimonial({ data }: TestimonialProps) {
           </div>
 
           <div className="hidden lg:flex flex-col gap-2.5 shrink-0 ml-1">
-            <button
-              type="button"
-              onClick={prevSlide}
-              aria-label="Previous Testimonial"
-              className="w-10 h-10 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200/70 flex items-center justify-center transition-all duration-300 hover:bg-[#ea580c] hover:text-white hover:border-[#ea580c] hover:shadow-lg hover:shadow-orange-500/25 hover:scale-110 active:scale-95"
-            >
-              <svg
-                className="w-5 h-5 stroke-[2.5]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </button>
-
-            <button
-              type="button"
-              onClick={nextSlide}
-              aria-label="Next Testimonial"
-              className="w-10 h-10 rounded-full bg-zinc-100 text-zinc-600 border border-zinc-200/70 flex items-center justify-center transition-all duration-300 hover:bg-[#ea580c] hover:text-white hover:border-[#ea580c] hover:shadow-lg hover:shadow-orange-500/25 hover:scale-110 active:scale-95"
-            >
-              <svg
-                className="w-5 h-5 stroke-[2.5]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </button>
+            {renderNavButton("prev", "w-10 h-10")}
+            {renderNavButton("next", "w-10 h-10")}
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2.5 mt-10 sm:mt-12">
-          {Array.from({ length: totalSlides }).map((_, dotIdx) => (
-            <button
-              key={dotIdx}
-              type="button"
-              onClick={() => setCurrentIndex(dotIdx)}
-              aria-label={`Go to slide ${dotIdx + 1}`}
-              className={`rounded-full transition-all duration-400 ease-out ${
-                currentIndex === dotIdx
-                  ? "w-8 h-2.5 bg-[#ea580c]"
-                  : "w-2.5 h-2.5 bg-zinc-300 hover:bg-[#ea580c]/60"
-              }`}
-            />
-          ))}
+        <div className="flex items-center justify-center gap-4 sm:gap-5 mt-6 sm:mt-8">
+          <div className="lg:hidden">{renderNavButton("prev", "w-9 h-9")}</div>
+
+          <div className="flex items-center justify-center gap-2.5">
+            {Array.from({ length: totalSlides }).map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                type="button"
+                onClick={() => setCurrentIndex(dotIdx)}
+                aria-label={`Go to slide ${dotIdx + 1}`}
+                className={`rounded-full transition-all duration-400 ease-out ${
+                  currentIndex === dotIdx
+                    ? "w-8 h-2.5 bg-[#ea580c]"
+                    : "w-2.5 h-2.5 bg-zinc-300 hover:bg-[#ea580c]/60"
+                }`}
+              />
+            ))}
+          </div>
+
+          <div className="lg:hidden">{renderNavButton("next", "w-9 h-9")}</div>
         </div>
       </div>
     </section>

@@ -43,7 +43,7 @@ export default function Footer({ data }: FooterProps) {
       { name: "Instagram", icon: "instagram", href: "https://instagram.com" },
       { name: "YouTube", icon: "youtube", href: "https://youtube.com" },
     ],
-    copyright = "© 2025 NexOilGas. All Rights Reserved.",
+    copyright = "© 2026 NexOilGas. All Rights Reserved. Powered by Lestow",
   } = footerData;
 
   const handleSmoothScroll = (
@@ -142,14 +142,14 @@ export default function Footer({ data }: FooterProps) {
 
             <Link
               href="/"
-              className="inline-flex items-center mb-5 sm:mb-6"
+              className="inline-flex items-center mb-4 sm:mb-5"
             >
               <Image
                 src={logo}
                 alt={logoAlt}
-                width={400}
-                height={140}
-                className="w-[270px] sm:w-[330px] lg:w-[370px] h-auto max-h-[125px] object-contain object-left"
+                width={260}
+                height={90}
+                className="w-[165px] sm:w-[195px] lg:w-[225px] h-auto object-contain object-left"
               />
             </Link>
 

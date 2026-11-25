@@ -67,18 +67,21 @@ export default function Services({ data }: ServicesProps) {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 lg:mb-16">
           <div className="max-w-xl">
             <div
-              className={`flex items-center gap-1.5 mb-2.5 sm:mb-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`flex items-center gap-3 sm:gap-4 mb-2.5 sm:mb-3 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isVisible
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 -translate-x-6"
               }`}
             >
-              <span className="text-[#ea580c] font-black text-lg sm:text-xl">
-                {taglinePrefix}
-              </span>
-              <span className="text-[#ea580c] font-bold text-base sm:text-lg tracking-wide">
-                {tagline}
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[#ea580c] font-black text-lg sm:text-xl">
+                  {taglinePrefix}
+                </span>
+                <span className="text-[#ea580c] font-bold text-base sm:text-lg tracking-wide">
+                  {tagline}
+                </span>
+              </div>
+              <span className="w-12 sm:w-16 h-[2px] bg-[#ea580c] rounded-full inline-block" />
             </div>
 
             <h2

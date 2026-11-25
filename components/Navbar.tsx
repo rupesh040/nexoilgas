@@ -239,13 +239,13 @@ export default function Navbar({ data }: NavbarProps) {
         }`}
       >
         <div
-          className={`max-w-md mx-auto flex flex-col gap-4 text-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`w-full max-w-md mx-auto flex flex-col gap-4 text-left transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             mobileMenuOpen
               ? "translate-y-0 opacity-100"
               : "-translate-y-4 opacity-0"
           }`}
         >
-          <ul className="flex flex-col gap-2 py-2">
+          <ul className="flex flex-col gap-1.5 py-2">
             {links.map((link: NavLink) => {
               const active = isLinkActive(link.href);
               return (
@@ -253,10 +253,10 @@ export default function Navbar({ data }: NavbarProps) {
                   <Link
                     href={link.href}
                     onClick={(e) => handleSmoothScroll(e, link.href)}
-                    className={`block py-2.5 px-4 text-base font-semibold rounded-xl transition-all duration-300 hover:translate-x-1 ${
+                    className={`block py-2.5 px-4 text-left text-base font-semibold rounded-xl border-l-4 transition-all duration-300 ${
                       active
-                        ? "text-amber-400 bg-white/10 font-bold border-l-4 border-amber-400"
-                        : "text-zinc-100 hover:text-amber-400 hover:bg-white/5"
+                        ? "text-amber-400 bg-white/10 font-bold border-amber-400"
+                        : "text-zinc-100 border-transparent hover:text-amber-400 hover:bg-white/5 hover:border-amber-400/50"
                     }`}
                   >
                     {link.name}

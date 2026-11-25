@@ -131,8 +131,8 @@ export default function WhyChooseUs({ data }: WhyChooseUsProps) {
       id="why-choose-us"
       className="w-full bg-[#011027] text-white overflow-hidden"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[640px] lg:min-h-[720px]">
-        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center px-6 sm:px-12 lg:px-16 xl:px-20 py-16 sm:py-20 lg:py-24">
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[640px] lg:min-h-[720px]">
+        <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-center px-5 sm:px-10 lg:px-12 xl:px-16 py-14 sm:py-18 lg:py-22">
           <p
             className={`text-zinc-400 font-semibold tracking-[0.2em] text-xs sm:text-sm uppercase mb-3 sm:mb-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isVisible
@@ -144,7 +144,7 @@ export default function WhyChooseUs({ data }: WhyChooseUsProps) {
           </p>
 
           <h2
-            className={`text-white font-extrabold text-3xl sm:text-4xl lg:text-[46px] xl:text-[50px] leading-[1.12] tracking-tight transition-all duration-700 delay-100 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`text-white font-extrabold text-[clamp(24px,6.4vw,32px)] sm:text-4xl lg:text-[46px] xl:text-[50px] leading-[1.15] sm:leading-[1.12] tracking-tight transition-all duration-700 delay-100 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6"
@@ -177,7 +177,7 @@ export default function WhyChooseUs({ data }: WhyChooseUsProps) {
           </div>
 
           <p
-            className={`text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl mb-10 sm:mb-12 transition-all duration-700 delay-250 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`text-zinc-300 text-sm sm:text-base leading-relaxed max-w-xl transition-all duration-700 delay-250 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6"
@@ -185,6 +185,14 @@ export default function WhyChooseUs({ data }: WhyChooseUsProps) {
           >
             {description}
           </p>
+
+          <div
+            className={`w-full max-w-xl h-px bg-white/20 my-7 sm:my-8 transition-all duration-700 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] origin-left ${
+              isVisible
+                ? "opacity-100 scale-x-100"
+                : "opacity-0 scale-x-0"
+            }`}
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-7 max-w-xl">
             {features.map((feature, idx) => (
@@ -213,7 +221,7 @@ export default function WhyChooseUs({ data }: WhyChooseUsProps) {
           </div>
         </div>
 
-        <div className="lg:col-span-5 xl:col-span-5 relative min-h-[440px] lg:min-h-[640px] overflow-hidden">
+        <div className="lg:col-span-5 xl:col-span-5 relative min-h-[420px] sm:min-h-[480px] lg:min-h-[640px] h-full overflow-hidden">
           <Image
             src={image}
             alt={`${headingPart1} ${headingPart2}`}
@@ -226,7 +234,7 @@ export default function WhyChooseUs({ data }: WhyChooseUsProps) {
 
           <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-start pointer-events-none">
             <div
-              className={`w-full max-w-md sm:max-w-lg lg:max-w-md xl:max-w-lg bg-[#ea580c] p-6 sm:p-8 lg:p-10 shadow-2xl pointer-events-auto transition-all duration-800 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_20px_50px_rgba(234,88,12,0.35)] hover:-translate-y-1 ${
+              className={`w-[92%] sm:w-[88%] max-w-md sm:max-w-lg lg:max-w-md xl:max-w-lg bg-[#ea580c] p-6 sm:p-8 lg:p-10 shadow-2xl pointer-events-auto transition-all duration-800 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_20px_50px_rgba(234,88,12,0.35)] hover:-translate-y-1 ${
                 isVisible
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 translate-x-8"

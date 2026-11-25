@@ -10,36 +10,25 @@ interface AboutProps {
 }
 
 function StatCounter({ value, start }: { value: string; start: boolean }) {
-  const [displayValue, setDisplayValue] = useState<string>(() => {
-    const match = value.match(/^([^0-9]*)(\d+(?:\.\d+)?)(.*)$/);
-    if (!match) return value;
-    return `${match[1]}0${match[3]}`;
-  });
+  const match = value.match(/^([^0-9]*)(\d+(?:\.\d+)?)(.*)$/);
+  const hasMatch = Boolean(match);
+  const prefix = match ? match[1] : "";
+  const rawNumber = match ? match[2] : "0";
+  const suffix = match ? match[3] : "";
+  const target = parseFloat(rawNumber);
+  const isDecimal = rawNumber.includes(".");
+  const decimals = isDecimal ? rawNumber.split(".")[1].length : 0;
+  const [animatedVal, setAnimatedVal] = useState<number>(0);
 
   useEffect(() => {
-    const match = value.match(/^([^0-9]*)(\d+(?:\.\d+)?)(.*)$/);
-    if (!match) {
-      setDisplayValue(value);
-      return;
-    }
-
-    const prefix = match[1];
-    const target = parseFloat(match[2]);
-    const suffix = match[3];
-    const isDecimal = match[2].includes(".");
-    const decimals = isDecimal ? match[2].split(".")[1].length : 0;
-
-    if (!start) {
-      setDisplayValue(`${prefix}0${suffix}`);
-      return;
-    }
+    if (!hasMatch || !start) return;
 
     if (
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      setDisplayValue(value);
-      return;
+      const reducedFrame = requestAnimationFrame(() => setAnimatedVal(target));
+      return () => cancelAnimationFrame(reducedFrame);
     }
 
     let startTime: number | null = null;
@@ -54,34 +43,38 @@ function StatCounter({ value, start }: { value: string; start: boolean }) {
       if (!startTime) startTime = currentTime;
       const progress = Math.min((currentTime - startTime) / duration, 1);
       const easedProgress = easeOutExpo(progress);
-      const currentVal = easedProgress * target;
-
-      const formattedNumber = isDecimal
-        ? currentVal.toFixed(decimals)
-        : Math.round(currentVal).toString();
-
-      setDisplayValue(`${prefix}${formattedNumber}${suffix}`);
+      setAnimatedVal(easedProgress * target);
 
       if (progress < 1) {
         animationFrameId = requestAnimationFrame(updateCount);
       } else {
-        const finalFormatted = isDecimal
-          ? target.toFixed(decimals)
-          : target.toString();
-        setDisplayValue(`${prefix}${finalFormatted}${suffix}`);
+        setAnimatedVal(target);
       }
     };
 
     animationFrameId = requestAnimationFrame(updateCount);
 
     return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
+      cancelAnimationFrame(animationFrameId);
     };
-  }, [value, start]);
+  }, [hasMatch, target, start]);
 
-  return <span>{displayValue}</span>;
+  if (!hasMatch) {
+    return <span>{value}</span>;
+  }
+
+  const shownVal = start ? animatedVal : 0;
+  const formattedNumber = isDecimal
+    ? shownVal.toFixed(decimals)
+    : Math.round(shownVal).toString();
+
+  return (
+    <span>
+      {prefix}
+      {formattedNumber}
+      {suffix}
+    </span>
+  );
 }
 
 export default function About({ data }: AboutProps) {
@@ -142,54 +135,7 @@ export default function About({ data }: AboutProps) {
                 : "opacity-0 -translate-x-12"
             }`}
           >
-            <div className="relative w-full max-w-[590px] aspect-[4/5] lg:aspect-[4/5]">
-              <svg
-                className="absolute inset-0 w-full h-full pointer-events-none"
-                viewBox="0 0 500 625"
-                fill="none"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <linearGradient
-                    id="aboutOrangeArc"
-                    x1="0"
-                    y1="0"
-                    x2="1"
-                    y2="1"
-                  >
-                    <stop offset="0%" stopColor="#ff7900" />
-                    <stop offset="100%" stopColor="#e85b00" />
-                  </linearGradient>
-
-                  <radialGradient id="aboutGlow">
-                    <stop offset="0%" stopColor="#fed7aa" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                  </radialGradient>
-                </defs>
-
-                <ellipse
-                  cx="250"
-                  cy="305"
-                  rx="230"
-                  ry="265"
-                  fill="url(#aboutGlow)"
-                />
-
-                <path
-                  d="M 183 35 C 85 45 20 145 20 250 C 20 282 23 320 30 355"
-                  stroke="url(#aboutOrangeArc)"
-                  strokeWidth="11"
-                  strokeLinecap="round"
-                />
-
-                <path
-                  d="M 440 360 C 480 420 475 505 430 570"
-                  stroke="url(#aboutOrangeArc)"
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                />
-              </svg>
-
+            <div className="relative w-full max-w-[590px] aspect-[3/4]">
               <div className="absolute inset-0 z-10 flex items-center justify-center">
                 <Image
                   src={image}
@@ -220,7 +166,7 @@ export default function About({ data }: AboutProps) {
             </div>
 
             <h2
-              className={`text-[#082416] text-[32px] sm:text-[42px] md:text-[48px] lg:text-[52px] xl:text-[62px] font-extrabold leading-[1.1] tracking-[-0.035em] mb-5 sm:mb-6 transition-all duration-700 delay-200 ${
+              className={`text-[#082416] text-[clamp(21px,6.3vw,32px)] sm:text-[42px] md:text-[48px] lg:text-[52px] xl:text-[62px] font-extrabold leading-[1.15] sm:leading-[1.1] tracking-[-0.035em] mb-5 sm:mb-6 transition-all duration-700 delay-200 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-6"
@@ -247,12 +193,16 @@ export default function About({ data }: AboutProps) {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-[#d6d6d6]">
+              <div className="grid grid-cols-2 sm:grid-cols-4">
                 {stats.map((stat, idx) => (
                   <div
                     key={idx}
                     className={`flex flex-col items-center justify-center text-center px-2 sm:px-3 py-3 sm:py-0 transition-transform duration-300 hover:scale-105 ${
-                      idx >= 2 ? "sm:border-l" : ""
+                      idx % 2 === 1 ? "border-l border-[#d6d6d6]" : ""
+                    } ${
+                      idx >= 2 ? "border-t border-[#d6d6d6] sm:border-t-0" : ""
+                    } ${
+                      idx > 0 ? "sm:border-l sm:border-[#d6d6d6]" : "sm:border-l-0"
                     }`}
                   >
                     <span className="text-[#ed7900] text-[34px] sm:text-[40px] lg:text-[43px] xl:text-[48px] leading-none font-extrabold tracking-tight">

@@ -325,13 +325,13 @@
               {
                 "icon": "mail",
                 "title": "Email Us",
-                "detail": "info@nexoilgas.com",
-                "href": "mailto:info@nexoilgas.com"
+                "detail": "info@xyz.com",
+                "href": "mailto:info@xyz.com"
               },
               {
                 "icon": "phone",
                 "title": "Call Us",
-                "detail": "+1 (528) 456-7592",
+                "detail": "+1 000-000-000",
                 "href": "tel:+15284567592"
               }
             ],
@@ -366,8 +366,8 @@
               { "name": "Contact Us", "href": "#contact" }
             ],
             "contact": {
-              "email": "info@nexoilgas.com",
-              "phone": "+1 (528) 456-7592",
+              "email": "info@xyz.com",
+              "phone": "+1 000-000-000",
               "address": "123 Energy Parkway,\nHouston, TX 77002, USA"
             },
             "socialLinks": [
@@ -377,7 +377,7 @@
               { "name": "Instagram", "icon": "instagram", "href": "https://instagram.com" },
               { "name": "YouTube", "icon": "youtube", "href": "https://youtube.com" }
             ],
-            "copyright": "© 2025 NexOilGas. All Rights Reserved. Powered by Lestow"
+            "copyright": "© 2026 NexOilGas. All Rights Reserved. Powered by Lestow"
           }
         }
       }

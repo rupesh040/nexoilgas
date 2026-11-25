@@ -14,7 +14,10 @@ export default function Hero({ heroData }: HeroProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const hero: HeroVariant =
@@ -145,25 +148,27 @@ export default function Hero({ heroData }: HeroProps) {
       </div>
 
       <div
-        className={`relative w-full aspect-[16/9] sm:aspect-[21/9] md:hidden overflow-hidden mt-auto z-10 transition-all duration-1000 ease-out ${
+        className={`relative w-full aspect-[16/9] sm:aspect-[21/9] md:hidden mt-auto z-10 transition-all duration-1000 ease-out ${
           mounted
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-6"
         }`}
       >
-        <Image
-          src={backgroundImage}
-          alt={heading}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[78%_center] select-none"
-        />
+        <div className="relative w-full h-full overflow-hidden">
+          <Image
+            src={backgroundImage}
+            alt={heading}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[78%_center] select-none scale-[1.03]"
+          />
+        </div>
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-x-0 -top-2 bottom-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, #042d47 0%, rgba(4, 45, 71, 0.94) 8%, rgba(4, 45, 71, 0.82) 16%, rgba(4, 45, 71, 0.58) 26%, rgba(4, 45, 71, 0.3) 38%, rgba(4, 45, 71, 0.1) 50%, transparent 62%, transparent 82%, rgba(4, 45, 71, 0.35) 92%, #042d47 100%)",
+              "linear-gradient(180deg, #042d47 0%, #042d47 14%, rgba(4, 45, 71, 0.88) 25%, rgba(4, 45, 71, 0.56) 38%, rgba(4, 45, 71, 0.24) 52%, transparent 66%, transparent 82%, rgba(4, 45, 71, 0.45) 92%, #042d47 100%)",
           }}
         />
       </div>
