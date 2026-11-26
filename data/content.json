@@ -181,7 +181,7 @@
         "variants": {
           "NexOilGasServices1": {
             "tagline": "Our Services",
-            "taglinePrefix": "/",
+            "taglinePrefix": "",
             "headingPart1": "Integrated",
             "headingPart2": "Oil & Gas",
             "headingHighlight": "Services",
